@@ -1,8 +1,6 @@
-# Welcome to React Router!
+# Ikifurni Web
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Simple ecommerce to buy furniture.
 
 ## Features
 
@@ -21,7 +19,7 @@ A modern, production-ready template for building full-stack React applications u
 Install the dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 ### Development
@@ -29,7 +27,7 @@ npm install
 Start the development server with HMR:
 
 ```bash
-npm run dev
+bun dev
 ```
 
 Your application will be available at `http://localhost:5173`.
