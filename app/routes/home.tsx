@@ -1,5 +1,6 @@
 import { log } from "console";
 import type { Route } from "./+types/home";
+import type { Products } from "~/modules/product/type";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,30 +9,20 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-type Product = {
-  id: string;
-  name: string;
-  description?: string | null;
-  price: number;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-type Products = Product[];
-
 export async function loader({ params }: Route.ClientLoaderArgs) {
   const response = await fetch(`http://localhost:3000/products`);
-  const products = await response.json();
+  const products: Products = await response.json();
+
   return products;
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   const products = loaderData;
 
-  console.log({ products });
   return (
     <div>
       <h1>Ikifurni</h1>
+      <pre>{JSON.stringify(products, null, 2)}</pre>
     </div>
   );
 }
