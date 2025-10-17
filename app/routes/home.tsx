@@ -10,7 +10,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.ClientLoaderArgs) {
-  const response = await fetch(`http://localhost:3000/products`);
+  const response = await fetch(`${process.env.BACKEND_API_URL}/products`);
   const products: Products = await response.json();
 
   return products;
