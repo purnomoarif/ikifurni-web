@@ -22,7 +22,16 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <div>
       <h1>Ikifurni</h1>
-      <pre>{JSON.stringify(products, null, 2)}</pre>
+
+      <ul>
+        {products.map((product) => {
+          return (
+            <li key={product.id}>
+              <img src={product.imageUrl} alt={product.name} />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
