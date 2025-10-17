@@ -1,8 +1,12 @@
 export type Product = {
   id: string;
+  slug: string;
   name: string;
-  description?: string | null;
+  imageUrl: string;
   price: number;
+  stock: number;
+  description: string;
+
   createdAt: Date | string;
   updatedAt: Date | string;
 };
