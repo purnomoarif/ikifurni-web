@@ -6,7 +6,6 @@ export type Product = {
   price: number;
   stock: number;
   description: string;
-
   createdAt: Date | string;
   updatedAt: Date | string;
 };
