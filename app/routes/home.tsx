@@ -8,7 +8,23 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+<<<<<<< HEAD
 export async function loader({ params }: Route.ClientLoaderArgs) {
+=======
+type Product = {
+  imageUrl: string | undefined;
+  id: string;
+  name: string;
+  description?: string | null;
+  price: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+type Products = Product[];
+
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+>>>>>>> c2b738d (fix: update API endpoint to use environment variable for product fetching)
   const response = await fetch(`${process.env.BACKEND_API_URL}/products`);
   const products: Products = await response.json();
   return products;
