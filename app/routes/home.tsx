@@ -8,8 +8,10 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function loader({ params }: Route.ClientLoaderArgs) {
-  const response = await fetch(`${process.env.BACKEND_API_URL}/products`);
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/products`
+  );
   const products: Products = await response.json();
 
   return products;
