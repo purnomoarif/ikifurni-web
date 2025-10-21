@@ -21,13 +21,17 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <div>
       <h1>Ikifurni</h1>
-      <pre>{JSON.stringify(products, null, 2)}</pre>
 
-      <ul>
+      <ul className="grid grid-cols-3">
         {products.map((product) => {
           return (
             <li key={product.id}>
-              <img src={product.imageUrl} alt={product.name} />
+              <img
+                src={product.imageUrl}
+                alt={product.name}
+                className="size-52"
+              />
+              <h2>{product.name}</h2>
             </li>
           );
         })}
