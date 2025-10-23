@@ -89,9 +89,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                   <p className="text-[#0058A3] font-bold text-xl">
                     {formatPrice(product.price)}
                   </p>
-                  <button className="w-full bg-[#FFCC00] text-[#0058A3] font-semibold py-2 rounded-md hover:bg-[#f5bf00] transition">
-                    Tambah ke Keranjang
-                  </button>
                 </CardFooter>
               </Card>
             </li>
