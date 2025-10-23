@@ -59,12 +59,12 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       </section>
 
       {/* PRODUCT SECTION */}
-      <section id="products" className="max-w-7xl mx-auto px-6 py-16">
+      <section id="products" className="max-w-7xl mx-auto px-6 py-16  ">
         <h2 className="text-3xl font-bold text-center text-[#0058A3] mb-10">
           Produk Pilihan Kami
         </h2>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <li key={product.id}>
               <Card className="hover:shadow-lg transition bg-white border-none">
@@ -98,11 +98,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           ))}
         </ul>
       </section>
-
-      {/* FOOTER */}
-      <footer className="bg-[#0058A3] text-white py-8 text-center mt-10">
-        <p className="text-sm">© {new Date().getFullYear()} Ikifurni</p>
-      </footer>
     </div>
   );
 }
