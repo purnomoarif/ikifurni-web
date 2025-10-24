@@ -1,5 +1,5 @@
 import { formatPrice } from "~/lib/format";
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/products";
 import type { Products } from "~/modules/product/type";
 import {
   Card,
@@ -12,8 +12,8 @@ import {
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Ikifurni" },
-    { name: "description", content: "Simple ecommerce for furniture." },
+    { title: "Products - Ikifurni" },
+    { name: "description", content: "All products from Ikifurni." },
   ];
 }
 
@@ -25,14 +25,11 @@ export async function clientLoader() {
   return products;
 }
 
-export default function HomeRoute({ loaderData }: Route.ComponentProps) {
+export default function ProductsRoute({ loaderData }: Route.ComponentProps) {
   const products = loaderData;
 
   return (
     <div>
-      <section>
-        <img src="/public-logo.svg" alt="logo" />
-      </section>
       <section id="products" className="max-w-5xl mx-auto px-6 py-16  ">
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {products.map((product) => (

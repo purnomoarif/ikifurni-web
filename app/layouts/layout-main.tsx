@@ -11,7 +11,7 @@ export default function LayoutMain() {
   const year = new Date().getFullYear();
   return (
     <div>
-      <nav>
+      <nav className="flex justify-center p-4">
         <ul className="flex gap-10 items-center">
           <li>
             <Button asChild>
