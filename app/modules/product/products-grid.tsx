@@ -1,48 +1,39 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+import { Link } from "react-router";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { formatPrice } from "~/lib/format";
 import type { Products } from "~/modules/product/type";
 
 export function ProductsGrid({ products }: { products: Products }) {
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-      {products.map((product) => (
-        <li key={product.id}>
-          <Card className="hover:shadow-lg transition bg-white border-none">
-            <CardHeader className="p-0">
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                className="w-full h-60 object-cover rounded-t-xl"
-              />
-            </CardHeader>
-
-            <CardContent className="pt-4">
-              <CardTitle className="text-lg font-semibold text-gray-800">
-                {product.name}
-              </CardTitle>
-              <CardDescription className="text-gray-500 mt-1">
-                {product.description?.slice(0, 60) || "Deskripsi produk"}
-              </CardDescription>
-            </CardContent>
-
-            <CardFooter className="flex-col items-end gap-2 mt-2">
-              <p className="text-[#0058A3] font-bold text-xl">
-                {formatPrice(product.price)}
-              </p>
-              <p className="text-md text-muted-foreground">
-                Stok: {product.stock}
-              </p>
-            </CardFooter>
-          </Card>
-        </li>
-      ))}
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
+      {products.map((product) => {
+        return (
+          <li key={product.id}>
+            <Link to={`/products/${product.slug}`}>
+              <Card className="overflow-hidden">
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-lg">{product.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col items-end">
+                  <p className="text-2xl font-bold text-primary-foreground">
+                    {formatPrice(product.price)}
+                  </p>
+                  <p className="text-md text-muted-foreground">
+                    Stock: {product.stock}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }
