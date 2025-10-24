@@ -32,9 +32,12 @@ export function ProductsGrid({ products }: { products: Products }) {
               </CardDescription>
             </CardContent>
 
-            <CardFooter className="flex-col items-start gap-2 mt-2">
+            <CardFooter className="flex-col items-end gap-2 mt-2">
               <p className="text-[#0058A3] font-bold text-xl">
                 {formatPrice(product.price)}
+              </p>
+              <p className="text-md text-muted-foreground">
+                Stok: {product.stock}
               </p>
             </CardFooter>
           </Card>
