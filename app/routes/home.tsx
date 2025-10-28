@@ -23,7 +23,7 @@ export default function HomeRoute({ loaderData }: Route.ComponentProps) {
   return (
     <div>
       <section>
-        <img src="/public-logo.svg" alt="logo" />
+        <img src="/hero-section.jpg" alt="hero-section" />
       </section>
       <section id="products" className="max-w-5xl mx-auto px-6 py-16  ">
         <ProductsGrid products={products} />
