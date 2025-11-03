@@ -10,7 +10,7 @@ import { Button } from "~/components/ui/button";
 export default function LayoutMain() {
   const year = new Date().getFullYear();
   return (
-    <div>
+    <div className="flex min-h-screen flex-col justify-between">
       <nav className="flex justify-center p-4">
         <ul className="flex gap-10 items-center">
           <li>
@@ -52,8 +52,9 @@ export default function LayoutMain() {
           </li>
         </ul>
       </nav>
-
-      <Outlet />
+      <main className="flex-[1]">
+        <Outlet />
+      </main>
 
       <footer>
         <p>&copy; {year} Ikifurni</p>
