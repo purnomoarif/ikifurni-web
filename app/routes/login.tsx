@@ -61,3 +61,21 @@ export default function LoginRoute({}: Route.ComponentProps) {
     </div>
   );
 }
+
+export async function clientAction({ request }: Route.ClientActionArgs) {
+  const formData = await request.formData();
+
+  const email = formData.get("email")?.toString();
+
+  const password = formData.get("password")?.toString();
+
+  const loginBody = {
+    email,
+    password,
+  };
+
+  console.log(loginBody);
+  // const project = await someApi.updateProject({ title });
+
+  return null;
+}

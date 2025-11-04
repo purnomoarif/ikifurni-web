@@ -83,3 +83,24 @@ export default function RegisterRoute({}: Route.ComponentProps) {
     </div>
   );
 }
+
+export async function clientAction({ request }: Route.ClientActionArgs) {
+  const formData = await request.formData();
+
+  const username = formData.get("username")?.toString();
+  const email = formData.get("email")?.toString();
+  const fullName = formData.get("fullName")?.toString();
+  const password = formData.get("password")?.toString();
+
+  const registerBody = {
+    username,
+    email,
+    fullName,
+    password,
+  };
+
+  console.log(registerBody);
+  // const project = await someApi.updateProject({ title });
+
+  return null;
+}
