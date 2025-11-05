@@ -12,7 +12,6 @@ import { Label } from "~/components/ui/label";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import type { RegisterResponse } from "~/modules/user/type";
-import { log } from "console";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Register" }];
