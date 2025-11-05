@@ -10,3 +10,5 @@ export type User = {
 export type RegisterResponse = User;
 
 export type LoginResponse = string;
+
+export type MeResponse = User;
