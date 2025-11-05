@@ -8,3 +8,5 @@ export type User = {
 };
 
 export type RegisterResponse = User;
+
+export type LoginResponse = string;
