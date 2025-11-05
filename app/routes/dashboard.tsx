@@ -6,8 +6,11 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader() {
+  const token = `...`;
+
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/auth/me`
+    `${import.meta.env.VITE_BACKEND_API_URL}/auth/me`,
+    { headers: { Authorization: `Bearer ${token}` } }
   );
   const meResponse: MeResponse = await response.json();
 
