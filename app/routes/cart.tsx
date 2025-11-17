@@ -27,12 +27,6 @@ export async function clientLoader() {
 
 export default function CartRoute({ loaderData }: Route.ComponentProps) {
   const { cart } = loaderData;
-  const navigate = useNavigate();
-
-  function handleLogout() {
-    Cookies.remove("token");
-    navigate("/login");
-  }
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 space-y-6">
@@ -41,7 +35,7 @@ export default function CartRoute({ loaderData }: Route.ComponentProps) {
         <p className="text-muted-foreground">Selected products to buy</p>
       </header>
 
-      <div>{JSON.stringify(cart, null)}</div>
+      <pre>{JSON.stringify(cart, null, 2)}</pre>
     </div>
   );
 }
