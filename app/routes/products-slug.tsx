@@ -1,5 +1,4 @@
 import {
-  Card,
   CardContent,
   CardDescription,
   CardFooter,
@@ -10,10 +9,8 @@ import type { Route } from "./+types/products-slug";
 import type { Product } from "~/modules/product/type";
 import { formatPrice } from "~/lib/format";
 import { Form, redirect } from "react-router";
-import { C } from "node_modules/react-router/dist/development/index-react-server-client-BIz4AUNd.mjs";
+
 import Cookies from "js-cookie";
-import type { CartItem } from "~/modules/cart/type";
-import { aw } from "node_modules/react-router/dist/development/routeModules-D5iJ6JYT";
 
 export function meta({}: Route.MetaArgs) {
   return [
