@@ -9,7 +9,11 @@ import {
 import type { Route } from "./+types/products-slug";
 import type { Product } from "~/modules/product/type";
 import { formatPrice } from "~/lib/format";
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
+import { C } from "node_modules/react-router/dist/development/index-react-server-client-BIz4AUNd.mjs";
+import Cookies from "js-cookie";
+import type { CartItem } from "~/modules/cart/type";
+import { aw } from "node_modules/react-router/dist/development/routeModules-D5iJ6JYT";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -62,7 +66,7 @@ export default function ProductsSlugRoute({
           {/* === Add to Cart Form === */}
           <CardFooter className="flex flex-col gap-4 mt-8 px-0">
             <Form
-              method="post"
+              method="PUT"
               className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full"
             >
               <input type="hidden" name="productId" value={product.id} />
@@ -94,4 +98,36 @@ export default function ProductsSlugRoute({
       </div>
     </section>
   );
+}
+
+export async function clientAction({ request }: Route.ClientActionArgs) {
+  const token = Cookies.get("token");
+  if (!token) return redirect("/login");
+
+  const formData = await request.formData();
+
+  const addToCartBody = {
+    productId: formData.get("productId")?.toString(),
+
+    quantity: Number(formData.get("quantity") || 1),
+  };
+
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/cart/items`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addToCartBody),
+    }
+  );
+  if (!response.ok) {
+    Cookies.remove("token");
+    return redirect("/login");
+  }
+  await response.json();
+
+  return redirect("/cart");
 }
